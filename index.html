@@ -78,6 +78,18 @@
 
     <script>
     document.addEventListener("DOMContentLoaded", function() {
+        // BETA 버튼 동작 추가
+        const betaBtn = document.getElementById("beta-btn");
+        if (betaBtn) {
+            betaBtn.addEventListener("click", function() {
+                console.log("BETA 신청 버튼 클릭됨");
+                const betaModal = document.getElementById("beta-modal");
+                if (betaModal) {
+                    betaModal.classList.remove("hidden");
+                }
+            });
+        }
+
         // 네비게이션 바 스크롤 시 배경색 변경
         const navbar = document.getElementById("navbar");
         window.addEventListener("scroll", function() {
