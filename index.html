@@ -8,7 +8,22 @@
     <style>
         html { scroll-behavior: smooth; }
         footer .flex { gap: 12px; }
+
+        /* 모달 애니메이션 */
+        #beta-modal {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        #beta-modal.show {
+            opacity: 1;
+        }
     </style>
+    <!-- Open Graph (OG) 태그: 공유 썸네일 설정 -->
+    <meta property="og:title" content="VIVEDIVE - DIVE INTO YOUR VIBE">
+    <meta property="og:description" content="매일 조금씩, 나만의 바이브를 알아가는 루틴">
+    <meta property="og:image" content="https://github.com/EllenSeonOfficial/vibedive/blob/main/hero-bg.jpg?raw=true">
+    <meta property="og:url" content="https://vibedivers.com">
+    <!-- <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
 </head>
 <body class="bg-gray-100 text-black">
     <!-- Navigation Bar: 페이지 상단 고정, 스크롤 시 배경색 변경하여 가독성 유지 -->
@@ -78,18 +93,6 @@
 
     <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // BETA 버튼 동작 추가
-        const betaBtn = document.getElementById("beta-btn");
-        if (betaBtn) {
-            betaBtn.addEventListener("click", function() {
-                console.log("BETA 신청 버튼 클릭됨");
-                const betaModal = document.getElementById("beta-modal");
-                if (betaModal) {
-                    betaModal.classList.remove("hidden");
-                }
-            });
-        }
-
         // 네비게이션 바 스크롤 시 배경색 변경
         const navbar = document.getElementById("navbar");
         window.addEventListener("scroll", function() {
@@ -99,6 +102,22 @@
                 navbar.classList.remove("bg-[#1D3E47]", "shadow-md");
             }
         });
+
+        const betaModal = document.getElementById("beta-modal");
+
+        function showModal() {
+            betaModal.classList.remove("hidden");
+            setTimeout(() => betaModal.classList.add("show"), 300);
+        }
+        
+        function hideModal() {
+            betaModal.classList.remove("show");
+            setTimeout(() => betaModal.classList.add("hidden"), 300);
+        }
+
+        // BETA 버튼 동작 추가
+        const betaBtn = document.getElementById("beta-btn");
+        if (betaBtn) betaBtn.addEventListener("click", showModal);
         
         // CTA 버튼 효과 추가
         const heroCta = document.getElementById("hero-cta");
@@ -113,26 +132,13 @@
                 this.classList.remove("opacity-50", "backdrop-blur-lg", "scale-110");
             });
             
-            heroCta.addEventListener("click", function() {
-                console.log("CTA 클릭됨");
-                const betaModal = document.getElementById("beta-modal");
-                if (betaModal) {
-                    betaModal.classList.remove("hidden");
-                }
-            });
+            heroCta.addEventListener("click", showModal);
         }
 
         // 모달 닫기 버튼 기능 추가
         const closeModal = document.getElementById("close-modal");
-        if (closeModal) {
-            closeModal.addEventListener("click", function() {
-                const betaModal = document.getElementById("beta-modal");
-                if (betaModal) {
-                    betaModal.classList.add("hidden");
-                }
-            });
-        }
-      
+        if (closeModal) closeModal.addEventListener("click", hideModal);
+
         // 이메일 형식 검사
         const emailInput = document.getElementById("email");
         const submitBtn = document.getElementById("submit-btn");
