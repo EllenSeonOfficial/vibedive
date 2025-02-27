@@ -84,9 +84,9 @@
     <!-- Footer -->
     <footer id="footer" class="py-24 bg-gradient-to-b from-[#142B36] via-[#0B1A22] to-black text-white text-center">
         <div class="flex justify-center space-x-4 mb-3">
-            <a href="#"><img src="https://github.com/EllenSeonOfficial/vibedive/blob/main/instagram-icon.png?raw=true" alt="Instagram" class="w-6"></a>
-            <a href="#"><img src="https://github.com/EllenSeonOfficial/vibedive/blob/main/youtube-icon.png?raw=true" alt="YouTube" class="w-6"></a>
-            <a href="#"><img src="https://github.com/EllenSeonOfficial/vibedive/blob/main/email-icon.png?raw=true" alt="Email" class="w-6"></a>
+            <a href="https://www.instagram.com/vibedive.rs"><img src="https://github.com/EllenSeonOfficial/vibedive/blob/main/instagram-icon.png?raw=true" alt="Instagram" class="w-6"></a>
+            <a href="https://youtu.be/FJslPXPsz_Y?si=VQuOL5aazhVSlJgk"><img src="https://github.com/EllenSeonOfficial/vibedive/blob/main/youtube-icon.png?raw=true" alt="YouTube" class="w-6"></a>
+            <a href="mailto:vibedive.official@gmail.com"><img src="https://github.com/EllenSeonOfficial/vibedive/blob/main/email-icon.png?raw=true" alt="Email" class="w-6"></a>
         </div>
         <p class="text-sm">© 2025 VIBEDIVE. All rights reserved.</p>
     </footer>
@@ -111,6 +111,7 @@
         }
         
         function hideModal() {
+            document.getElementById("email").value = "";
             betaModal.classList.remove("show");
             setTimeout(() => betaModal.classList.add("hidden"), 300);
         }
