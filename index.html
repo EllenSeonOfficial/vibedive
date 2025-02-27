@@ -4,80 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VibeDive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
+        footer .flex { gap: 12px; }
     </style>
 </head>
 <body class="bg-gray-100 text-black">
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 w-full bg-gray-900 text-white p-4 flex justify-between items-center z-50">
-        <span class="text-lg font-bold">VIBEDIVE</span>
-        <button id="menu-btn" class="md:hidden bg-gray-800 px-4 py-2 rounded-full text-sm">메뉴</button>
-        <div id="nav-links" class="hidden md:flex space-x-4">
-            <a href="#features" class="px-4 py-2 rounded-full text-sm hover:bg-gray-700">서비스</a>
-            <a href="#footer" class="px-4 py-2 rounded-full text-sm hover:bg-gray-700">문의하기</a>
-            <button id="beta-btn" class="bg-blue-700 px-4 py-2 rounded-full text-sm">베타신청</button>
+    <!-- Navigation Bar: 페이지 상단 고정, 스크롤 시 배경색 변경하여 가독성 유지 -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full text-white p-4 flex justify-between items-center z-50 backdrop-blur-md bg-opacity-70 transition-all duration-300">
+        <span class="text-xl font-bold">VIBEDIVE</span>
+        <div id="nav-links" class="md:flex space-x-4">
+            <a href="#background-section" class="px-4 py-2 rounded-full text-sm transition-all duration-300 ease-in-out hover:scale-105 hover:text-[#F8F9FA] hidden md:inline">소개</a>
+            <a href="#footer" class="px-4 py-2 rounded-full text-sm transition-all duration-300 ease-in-out hover:scale-105 hover:text-[#F8F9FA] hidden md:inline">Contact</a>
+            <button id="beta-btn" class="bg-white text-[#1D3E47] border border-[#1D3E47] hover:bg-[#1D3E47] hover:text-white px-4 py-1.5 rounded-full text-[#1D3E47] text-sm font-semibold shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+              <span class="hidden md:inline">BETA 신청하기</span>
+              <span class="md:hidden">BETA</span>
+            </button>
         </div>
     </nav>
 
     <!-- Beta Signup Modal -->
-    <div id="beta-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
-        <div class="bg-white p-6 rounded-lg shadow-lg text-center max-w-sm w-full">
-            <h2 class="text-2xl font-bold">베타 신청하기</h2>
-            <p class="text-gray-600 mt-2">이메일을 입력하고 VibeDive의 베타 버전에 참여하세요!</p>
-            <input type="email" id="email" class="mt-4 p-2 w-full border rounded-lg" placeholder="이메일 입력" required>
-            <p id="error-msg" class="text-red-500 text-sm hidden">올바른 이메일을 입력하세요.</p>
-            <button id="submit-btn" class="mt-4 bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full text-white font-semibold">신청하기</button>
-            <button id="close-modal" class="mt-2 text-gray-500">닫기</button>
+    <div id="beta-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50 hidden">
+        <div class="bg-gradient-to-b from-[#1D3E47] to-[#0B1A22] text-white p-8 rounded-2xl shadow-2xl text-center max-w-md w-full relative">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-300 hover:text-white transition-all">✖</button>
+            <h2 class="text-3xl font-bold">바이브 다이브, <br>시작할 준비 되셨나요?</h2>
+            <p class="text-gray-300 mt-4">가장 먼저 새로운 경험을 만나보세요.</p>
+            <input type="email" id="email" class="mt-6 p-3 w-full border-none rounded-lg text-gray-900 focus:ring-2 focus:ring-[#F8F9FA]" placeholder="이메일을 입력하세요" required>
+            <p id="error-msg" class="text-red-400 text-sm hidden mt-2">올바른 이메일을 입력해주세요.</p>
+            <button id="submit-btn" class="mt-6 bg-gradient-to-r from-[#2D6975] to-[#1D3E47] hover:from-[#1D3E47] hover:to-[#0B1A22] px-6 py-3 rounded-full text-white font-semibold shadow-lg transition-all duration-300">BETA 신청하기</button>
         </div>
     </div>
-
+  
     <!-- Hero Section -->
-    <section class="hero-section relative w-full h-screen bg-cover bg-center flex flex-col items-center justify-center text-white text-center transition-opacity duration-700 opacity-0" style="background-image: url('./images/hero-bg.jpg');">
-        <h1 class="text-4xl md:text-5xl font-bold">Feel the tide, <br> Dive into your vibe</h1>
-        <p class="mt-4 text-lg">지금, 나의 바이브에 다이빙 해 볼까요?<br>3... 2... 1...</p>
-        <a href="#" id="hero-cta" class="mt-6 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-white text-lg font-semibold transition-transform transform hover:scale-105">숨 참고, VibeDive!</a>
+    <section class="hero-section relative w-full h-[90vh] bg-cover bg-center flex flex-col items-center justify-center text-white text-center opacity-100" style="background-image: url('https://github.com/EllenSeonOfficial/vibedive/blob/main/hero-bg.jpg?raw=true');">
+        <div class="absolute inset-0 bg-[#1D3E47] opacity-40"></div>
+        <h1 class="text-4xl md:text-5xl font-bold relative z-10">Feel the tide, <br> Dive into your vibe</h1>
+        <p class="mt-8 text-lg relative z-10">지금, 나의 바이브에 다이빙 해 볼까요?<br>3... 2... 1...</p>
+        <a href="#" id="hero-cta" class="mt-6 px-8 py-4 rounded-full text-white text-lg font-semibold relative z-10 bg-gradient-to-r from-[#1D3E47] to-[#0B1A22] bg-opacity-80 backdrop-blur-md transition-all duration-500 ease-in-out">숨 참고, VibeDive!</a>
     </section>
     
     <!-- Features Section -->
-    <section id="features" class="py-16 text-center bg-white">
-        <h2 class="text-2xl font-bold">매일 조금씩, <br> 나만의 바이브를 알아가는 루틴</h2>
-        <div class="mt-8 flex flex-wrap justify-center space-x-8">
-            <div class="text-center max-w-xs">
-                <span class="text-3xl">✔️</span>
-                <h3 class="text-lg font-semibold mt-2">바이브 체크</h3>
-                <p class="text-gray-600 text-sm">하루 1분, 지금 내 바이브 기록하기</p>
+    <section id="background-section" class="py-36 text-center bg-gradient-to-b from-white to-[#1D3E47]/75 text-gray-900">
+        <h2 class="text-2xl font-bold text-[#1D3E47]">매일 조금씩, <br> 나만의 바이브를 알아가는 루틴</h2>
+        <div class="mt-16 flex flex-wrap justify-center md:flex-row md:space-x-16 flex-col space-y-8 md:space-y-0 items-center">
+            <div class="text-center max-w-s">
+                <span class="text-4xl">✔️</span>
+                <h3 class="text-xl font-semibold mt-2 text-[#1D3E47]">바이브 체크</h3>
+                <p class="text-gray-700 text-base">하루 1분, 지금 내 바이브 기록하기</p>
             </div>
-            <div class="text-center max-w-xs">
-                <span class="text-3xl">📈</span>
-                <h3 class="text-lg font-semibold mt-2">감정 분석 리포트</h3>
-                <p class="text-gray-600 text-sm">나도 몰랐던 감정 패턴을 알아보기</p>
+            <div class="text-center max-w-s">
+                <span class="text-4xl">📈</span>
+                <h3 class="text-xl font-semibold mt-2 text-[#1D3E47]">감정 분석 리포트</h3>
+                <p class="text-gray-700 text-base">나도 몰랐던 감정 패턴을 알아보기</p>
             </div>
-            <div class="text-center max-w-xs">
-                <span class="text-3xl">👜</span>
-                <h3 class="text-lg font-semibold mt-2">맞춤형 바이브 가이드</h3>
-                <p class="text-gray-600 text-sm">내 바이브에 딱 맞는 실천 가이드 제공</p>
+            <div class="text-center max-w-s">
+                <span class="text-4xl">📋</span>
+                <h3 class="text-xl font-semibold mt-2 text-[#1D3E47]">맞춤형 바이브 가이드</h3>
+                <p class="text-gray-700 text-base">내 바이브에 딱 맞는 실천 가이드 제공</p>
             </div>
         </div>
     </section>
     
     <!-- Footer -->
-    <footer id="footer" class="py-6 bg-gray-900 text-white text-center">
+    <footer id="footer" class="py-24 bg-gradient-to-b from-[#142B36] via-[#0B1A22] to-black text-white text-center">
         <div class="flex justify-center space-x-4 mb-3">
-            <a href="#"><img src="instagram-icon.png" alt="Instagram" class="w-6"></a>
-            <a href="#"><img src="youtube-icon.png" alt="YouTube" class="w-6"></a>
-            <a href="#"><img src="email-icon.png" alt="Email" class="w-6"></a>
+            <a href="#"><img src="https://github.com/EllenSeonOfficial/vibedive/blob/main/instagram-icon.png?raw=true" alt="Instagram" class="w-6"></a>
+            <a href="#"><img src="https://github.com/EllenSeonOfficial/vibedive/blob/main/youtube-icon.png?raw=true" alt="YouTube" class="w-6"></a>
+            <a href="#"><img src="https://github.com/EllenSeonOfficial/vibedive/blob/main/email-icon.png?raw=true" alt="Email" class="w-6"></a>
         </div>
         <p class="text-sm">© 2025 VIBEDIVE. All rights reserved.</p>
     </footer>
-    
-    <script src="https://cdn.tailwindcss.com">        
-        document.getElementById('hero-cta').addEventListener('click', function() {
-            document.getElementById('beta-modal').classList.remove('hidden');
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 네비게이션 바 스크롤 시 배경색 변경
+        const navbar = document.getElementById("navbar");
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add("bg-[#1D3E47]", "shadow-md");
+            } else {
+                navbar.classList.remove("bg-[#1D3E47]", "shadow-md");
+            }
         });
-    </script>
+        
+        // CTA 버튼 효과 추가
+        const heroCta = document.getElementById("hero-cta");
+        if (heroCta) {
+            heroCta.addEventListener("mouseover", function() {
+                this.innerText = "꼬르르르르르르르륵";
+                this.classList.add("opacity-50", "backdrop-blur-lg", "scale-110");
+            });
+            
+            heroCta.addEventListener("mouseleave", function() {
+                this.innerText = "숨 참고, VibeDive!";
+                this.classList.remove("opacity-50", "backdrop-blur-lg", "scale-110");
+            });
+            
+            heroCta.addEventListener("click", function() {
+                console.log("CTA 클릭됨");
+                const betaModal = document.getElementById("beta-modal");
+                if (betaModal) {
+                    betaModal.classList.remove("hidden");
+                }
+            });
+        }
+
+        // 모달 닫기 버튼 기능 추가
+        const closeModal = document.getElementById("close-modal");
+        if (closeModal) {
+            closeModal.addEventListener("click", function() {
+                const betaModal = document.getElementById("beta-modal");
+                if (betaModal) {
+                    betaModal.classList.add("hidden");
+                }
+            });
+        }
+      
+        // 이메일 형식 검사
+        const emailInput = document.getElementById("email");
+        const submitBtn = document.getElementById("submit-btn");
+        const errorMsg = document.getElementById("error-msg");
+
+        // 이메일 수집 API 연동
+        submitBtn.addEventListener("click", function(event) {
+            event.preventDefault();
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(emailInput.value)) {
+                errorMsg.classList.remove("hidden");
+                errorMsg.textContent = "올바른 이메일을 입력해주세요.";
+            } else {
+                errorMsg.classList.add("hidden");
+                fetch("https://script.google.com/macros/s/AKfycbwG9BU0cjnzrYWSlXg1ltpo6P4DMv7Ldf8OnNuS_Fq8QfOtiaRyIScZhp6UjU4fNnLI/exec", {
+                    method: "POST",
+                    mode: "no-cors",  // CORS 문제 방지
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: emailInput.value })
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log("서버 응답:", data);
+                    alert("베타 신청이 완료되었습니다!");
+                    document.getElementById("beta-modal").classList.add("hidden");
+                })
+                .catch(error => {
+                    alert("이메일 저장 중 오류가 발생했습니다. 다시 시도해주세요.");
+                    console.error("Error:", error);
+                });
+            }
+        });
+    });
     </script>
 </body>
 </html>
