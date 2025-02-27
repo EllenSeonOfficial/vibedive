@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeDive</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-black">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-gray-900 text-white p-4 flex justify-between items-center z-50">
+        <span class="text-lg font-bold">VIBEDIVE</span>
+        <button id="menu-btn" class="md:hidden bg-gray-800 px-4 py-2 rounded-full text-sm">메뉴</button>
+        <div id="nav-links" class="hidden md:flex space-x-4">
+            <a href="#features" class="px-4 py-2 rounded-full text-sm hover:bg-gray-700">서비스</a>
+            <a href="#footer" class="px-4 py-2 rounded-full text-sm hover:bg-gray-700">문의하기</a>
+            <button id="beta-btn" class="bg-blue-700 px-4 py-2 rounded-full text-sm">베타신청</button>
+        </div>
+    </nav>
+
+    <!-- Beta Signup Modal -->
+    <div id="beta-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center max-w-sm w-full">
+            <h2 class="text-2xl font-bold">베타 신청하기</h2>
+            <p class="text-gray-600 mt-2">이메일을 입력하고 VibeDive의 베타 버전에 참여하세요!</p>
+            <input type="email" id="email" class="mt-4 p-2 w-full border rounded-lg" placeholder="이메일 입력" required>
+            <p id="error-msg" class="text-red-500 text-sm hidden">올바른 이메일을 입력하세요.</p>
+            <button id="submit-btn" class="mt-4 bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full text-white font-semibold">신청하기</button>
+            <button id="close-modal" class="mt-2 text-gray-500">닫기</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section relative w-full h-screen bg-cover bg-center flex flex-col items-center justify-center text-white text-center transition-opacity duration-700 opacity-0" style="background-image: url('./images/hero-bg.jpg');">
+        <h1 class="text-4xl md:text-5xl font-bold">Feel the tide, <br> Dive into your vibe</h1>
+        <p class="mt-4 text-lg">지금, 나의 바이브에 다이빙 해 볼까요?<br>3... 2... 1...</p>
+        <a href="#" id="hero-cta" class="mt-6 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-white text-lg font-semibold transition-transform transform hover:scale-105">숨 참고, VibeDive!</a>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="py-16 text-center bg-white">
+        <h2 class="text-2xl font-bold">매일 조금씩, <br> 나만의 바이브를 알아가는 루틴</h2>
+        <div class="mt-8 flex flex-wrap justify-center space-x-8">
+            <div class="text-center max-w-xs">
+                <span class="text-3xl">✔️</span>
+                <h3 class="text-lg font-semibold mt-2">바이브 체크</h3>
+                <p class="text-gray-600 text-sm">하루 1분, 지금 내 바이브 기록하기</p>
+            </div>
+            <div class="text-center max-w-xs">
+                <span class="text-3xl">📈</span>
+                <h3 class="text-lg font-semibold mt-2">감정 분석 리포트</h3>
+                <p class="text-gray-600 text-sm">나도 몰랐던 감정 패턴을 알아보기</p>
+            </div>
+            <div class="text-center max-w-xs">
+                <span class="text-3xl">👜</span>
+                <h3 class="text-lg font-semibold mt-2">맞춤형 바이브 가이드</h3>
+                <p class="text-gray-600 text-sm">내 바이브에 딱 맞는 실천 가이드 제공</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="footer" class="py-6 bg-gray-900 text-white text-center">
+        <div class="flex justify-center space-x-4 mb-3">
+            <a href="#"><img src="instagram-icon.png" alt="Instagram" class="w-6"></a>
+            <a href="#"><img src="youtube-icon.png" alt="YouTube" class="w-6"></a>
+            <a href="#"><img src="email-icon.png" alt="Email" class="w-6"></a>
+        </div>
+        <p class="text-sm">© 2025 VIBEDIVE. All rights reserved.</p>
+    </footer>
+    
+    <script src="https://cdn.tailwindcss.com">        
+        document.getElementById('hero-cta').addEventListener('click', function() {
+            document.getElementById('beta-modal').classList.remove('hidden');
+        });
+    </script>
+    </script>
+</body>
+</html>
